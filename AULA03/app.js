@@ -1,6 +1,7 @@
 console.log('Calculadora Simples');
 
-const { exit } = require('process');
+// import do arquivo do funcao para realizar calculos
+const { calcular } = require('./modulos/calculadora.js');
 var readline = require('readline');
 
 var entradaDados = readline.createInterface({
@@ -19,7 +20,7 @@ entradaDados.question('Digite o numero1: \n', function (valor1){
     entradaDados.question('Digite o numero2: \n', function (valor2){
         let numero2 = parseFloat(valor2);
 
-            // funcao para validar se uam variavel e numero ou nao
+            // funcao para validar se uma variavel e numero ou nao
             if(isNaN(numero1) || isNaN(numero2) ){
                 console.log('e necessario digitar um numero');
                 exit();
@@ -33,22 +34,15 @@ entradaDados.question('Digite o numero1: \n', function (valor1){
                 // == comparacao
                 // === comparacao de conteudo e tipo de dados
             let operacao = opcao.toUpperCase();
-            let resultado;
             
-
-            if(operacao == 'SOMAR' || operacao == '+'){
-                resultado = numero1 + numero2;
-            }else if(operacao == 'SUBTRAIR' || operacao == '-'){
-                resultado = numero1 - numero2;
-            }else if(operacao == 'MULTIPLICAR' || operacao == '*'){
-                resultado = numero1 * numero2;
-            }else if(operacao == 'DIVIDIR' || operacao == '/'){
-                resultado = numero1 / numero2;
-            }else{
-                resultado = 'ERRO: nao foi escolhido uma operacao valida';
+            
+            //chama a funcao que realizara os calculos
+            if (resultado = calcular(numero1, numero2, operacao)){
+                console.log('Resultado da operacao: ' + resultado);
+                entradaDados.close(); 
             }
 
-                /** switch(operacao)
+            /**  switch(operacao)
                 {
                     case 'SOMAR':
                         resultado = numero1 + numero2;
@@ -64,10 +58,11 @@ entradaDados.question('Digite o numero1: \n', function (valor1){
                         break;
                     default:
                         resultado = 'ERRO: nao foi escolhido uma operacao valida';
-                } **/
+                } 
+                **/
 
-            console.log('Resultado da operacao: ' + resultado);
-            entradaDados.close();
+            
         });
-    })
-})
+    });
+});
+
