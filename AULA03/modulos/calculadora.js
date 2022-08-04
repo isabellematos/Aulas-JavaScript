@@ -56,29 +56,34 @@ let erro = false;
 
 
 if(operacao == 'SOMAR' || operacao == '+'){
-     resultado = numero1 + numero2;
+    resultado = somar(numero1,numero2);
 }else if(operacao == 'SUBTRAIR' || operacao == '-'){
-    resultado = numero1 - numero2;
+    resultado = subtrair(numero1,numero2);
 }else if(operacao == 'MULTIPLICAR' || operacao == '*'){
-    resultado = numero1 * numero2;
+    resultado = multiplicar(numero1,numero2);
 }else if(operacao == 'DIVIDIR' || operacao == '/'){
     if(numero2 == 0){
         console.log('ERRO: nao se pode dividir um numero por 0');
         erro = true;
     
     }
-resultado = numero1 / numero2;
+resultado = dividir(numero1,numero2);
     }else{
         console.log ('ERRO: nao foi escolhido uma operacao valida');
         erro = true;
-        
     }
 
     if (erro)
         return false;
     else
-        return resultado;
+        return resultado.toFixed(2);
 }
+
+// modelo de funcao chamado de arrow function
+const somar = (valor1, valor2) => parseFloat(valor1) + parseFloat(valor2);
+const subtrair = (valor1, valor2) => parseFloat(valor1) - parseFloat(valor2);
+const multiplicar = (valor1, valor2) => parseFloat(valor1) * parseFloat(valor2);
+const dividir = (valor1, valor2) => parseFloat(valor1) / parseFloat(valor2);
 
 
 
